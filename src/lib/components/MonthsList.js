@@ -1,19 +1,5 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
-
-const MonthListContainer = styled.span`
-  padding: 5px;
-`
-
-const MonthSelect = styled.select`
-  width: 100px;
-  -webkit-appearance: menulist-button;
-  background: transparent;
-  height: 25px;
-  border-radius: 4px;
-  font-family: sans-serif;
-  font-size: 14px;
-`
+import Select from 'react-select'
 
 class MonthsList extends Component {
   state = {
@@ -35,13 +21,17 @@ class MonthsList extends Component {
 
   render() {
     return (
-      <MonthListContainer>
-        <MonthSelect onChange={this.props.onChange} value={this.props.currentTime.iMonth()}>
-          {
-            this.state.months.map((item, key) => <option key={item.number} value={item.number}>{item.name}</option>)
-          }
-        </MonthSelect>
-      </MonthListContainer>
+      <div>
+        <Select
+          onChange={this.props.onChange}
+          value={this.state.months.find(i => this.props.currentTime.iMonth() === i.number)}
+          getOptionLabel ={(option) => option.name}
+          getOptionValue ={(option) => option.number}
+          options={this.state.months}
+          components={{ IndicatorSeparator: null }}
+          {...this.props.reactSelectProps}
+        />
+      </div>
     )
   }
 }

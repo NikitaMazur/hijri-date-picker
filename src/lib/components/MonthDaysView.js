@@ -1,40 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
-
-const MonthDays = styled.div`
-  text-align: right;
-  display: flex;
-  flex-flow: wrap;
-`
-
-const MonthDay = styled.div`
-  margin: 2px;
-  width: 30px;
-  padding: 1px;
-  border: 1px solid #fff;
-  text-align: center;
-  -webkit-box-sizing: unset !important;
-  box-sizing: unset;
-  border-radius: 4px;
-  :hover {
-    ${props => props.noHover? '' : "border: 1px solid black"};
-  };
-`
-
-const MonthDayButton = styled.button`
-  cursor: pointer;
-  border: 0px;
-  width: 30px;
-  padding: 5px;
-  font-size: 14px
-  :focus {
-    outline: unset;
-  }
-  border-radius: 4px;
-  background-color: ${props => props.selected ? "black;" : "white;"};
-  color: ${props => props.selected ? "white;" : ""};
-  
-`
+import cx from 'classnames'
 
 class MonthDaysView extends React.Component {
   
@@ -62,22 +27,22 @@ class MonthDaysView extends React.Component {
       let daysList = []
       for (let i = this.state.englishDayNames.indexOf(this.getMonthStartDayName()); i > 0; i--){
         daysList.push(
-          <MonthDay key={daysList.length.toString()} noHover></MonthDay>
+          <div key={daysList.length.toString()} className="month-days__item no-hover"></div>
         )
       }
       for (let i = 1; i < this.monthDays() + 1; i++) {
         daysList.push(
-          <MonthDay selected={this.isSelectedDate(i)} key={daysList.length.toString()}>
-            <MonthDayButton selected={this.isSelectedDate(i)} onClick={this.props.setSelectedDate} value={i} type="button">{i}</MonthDayButton>
-          </MonthDay>
+          <div className="month-days__item" selected={this.isSelectedDate(i)} key={daysList.length.toString()}>
+            <button className={cx('month-days__btn', this.isSelectedDate(i) ? 'selected' : '')} onClick={this.props.setSelectedDate} value={i} type="button">{i}</button>
+          </div>
         )
       }
       
-      return <MonthDays>
+      return <div className="month-days">
       {
         daysList
       }
-    </MonthDays>;
+    </div>;
   }
 }
 

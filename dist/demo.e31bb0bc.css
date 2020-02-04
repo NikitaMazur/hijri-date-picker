@@ -1,0 +1,106 @@
+.day-names {
+  text-align: right;
+}
+.day-names__item {
+  display: inline-block;
+  margin: 2px;
+  width: 30px;
+  height: 25px;
+  padding: 1px;
+  border: 1px solid transparent;
+  text-align: center;
+  -webkit-box-sizing: unset !important;
+  box-sizing: unset;
+}
+
+.hijri-calendar {
+  width: 300px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  margin-top: 2px;
+  font-family: serif;
+  box-sizing: unset;
+  -webkit-box-sizing: unset;
+  font-size: 14px;
+  border-radius: 4px;
+  z-index: 1000;
+  color: black !important;
+}
+.hijri-calendar__controls {
+  text-align: center;
+  padding: 15px 15px 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.hijri-calendar__control-btn {
+  position: absolute;
+  border: 0px;
+  top: 15px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+.hijri-calendar__control-btn:hover {
+  color: #888888;
+}
+.hijri-calendar__control-btn:focus {
+  outline: unset;
+}
+.hijri-calendar__control-btn--prev {
+  right: 15px;
+}
+.hijri-calendar__control-btn--next {
+  left: 15px;
+}
+.hijri-calendar__year-month-list {
+  margin: 10px -3px;
+  display: flex;
+}
+.hijri-calendar__year-month-list > div {
+  flex: 1;
+  margin: 0 3px;
+}
+
+.month-days {
+  text-align: right;
+  display: flex;
+  flex-flow: wrap;
+  padding: 0 15px 15px;
+}
+.month-days__item {
+  margin: 2px;
+  width: 30px;
+  padding: 1px;
+  border: 1px solid #fff;
+  text-align: center;
+  -webkit-box-sizing: unset !important;
+  box-sizing: unset;
+  border-radius: 4px;
+}
+.month-days__item:not(.no-hover):hover {
+  border: 1px solid black;
+}
+.month-days__btn {
+  cursor: pointer;
+  border: 0px;
+  width: 30px;
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 4px;
+  background-color: white;
+  color: black;
+}
+.month-days__btn:focus {
+  outline: unset;
+}
+.month-days__btn.selected {
+  background-color: black;
+  color: white;
+}#app {
+    text-align: center;
+}
+
+.input-style {
+    width: 165px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}

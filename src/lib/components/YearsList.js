@@ -1,20 +1,7 @@
 // Hijri year (1356 to 1500)
 import React, { Component } from 'react'
-import styled from 'styled-components'
+import Select from 'react-select'
 
-const YearListContainer = styled.span`
-  padding: 5px;
-`
-
-const YearSelect = styled.select`
-  width: 100px;
-  -webkit-appearance: menulist-button;
-  background: transparent;
-  height: 25px;
-  border-radius: 4px;
-  font-family: sans-serif;
-  font-size: 12px;
-`
 class YearsList extends Component {
   
   state = {
@@ -26,16 +13,19 @@ class YearsList extends Component {
     let yearsList = []
     // Generate a select options of all supported years
     for(let i = this.state.minYear; i <= this.state.maxYear; i = i + 1){
-      yearsList.push(
-        <option key={i} value={i}>{i}</option>
-      )
+      yearsList.push(i)
     }
+    yearsList = yearsList.map(i => ({ label: i, value: i }))
     return (
-      <YearListContainer>
-        <YearSelect onChange={this.props.onChange} value={this.props.currentTime.iYear()}>
-          {yearsList} 
-        </YearSelect>
-      </YearListContainer>
+      <div>
+        <Select
+          onChange={this.props.onChange}
+          value={yearsList.find(i => this.props.currentTime.iYear() === i.value)}
+          options={yearsList}
+          components={{ IndicatorSeparator: null }}
+          {...this.props.reactSelectProps}
+        />
+      </div>
     )
   }
 }
